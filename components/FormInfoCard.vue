@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-neutral-50 rounded-xl p-4 flex items-center justify-between mb-3 cursor-pointer"
+    class="bg-neutral-50 rounded-xl p-4 flex items-center justify-between mb-3 cursor-pointer border border-white"
     @click="$emit('edit')"
   >
     <div>
