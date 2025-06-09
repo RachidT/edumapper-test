@@ -46,11 +46,7 @@ function handleFormConfirmed(data: {
 }
 
 function handleFormClosed() {
-  if (!classValue.value && !bacValue.value) {
-    isEditing.value = true;
-  } else {
-    isEditing.value = false;
-  }
+  isEditing.value = false;
 }
 
 function handleEdit() {

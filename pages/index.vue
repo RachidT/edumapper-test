@@ -7,9 +7,21 @@
 
     <ClassSection />
 
-    <FormInfoCard title="Spécialités" subtitle="À compléter" />
-    <FormInfoCard title="Notes" subtitle="À compléter" />
-    <FormInfoCard title="Résultats au bac" subtitle="À compléter" />
+    <FormSection
+      title="Spécialités"
+      placeholder="Ex: Mathématiques, Physique"
+      emptySubtitle="À compléter"
+    />
+    <FormSection
+      title="Notes"
+      placeholder="Ex: 15/20"
+      emptySubtitle="À compléter"
+    />
+    <FormSection
+      title="Résultats au bac"
+      placeholder="Ex: Mention Très Bien"
+      emptySubtitle="À compléter"
+    />
     <!-- Les autres étapes/formulaires viendront ici -->
     <div>
       <i-heroicons-home-solid class="w-10 h-10 text-blue-500" />
@@ -22,4 +34,5 @@
 import SchoolCard from "~/components/SchoolCard.vue";
 import FormInfoCard from "~/components/FormInfoCard.vue";
 import ClassSection from "~/components/ClassSection.vue";
+import FormSection from "~/components/FormSection.vue";
 </script>
