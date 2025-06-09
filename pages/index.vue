@@ -4,7 +4,9 @@
       <h1 class="font-semibold text-lg">Edumapper*</h1>
     </header>
     <SchoolCard />
-    <FormStepClass />
+
+    <ClassSection />
+
     <FormInfoCard title="Spécialités" subtitle="À compléter" />
     <FormInfoCard title="Notes" subtitle="À compléter" />
     <FormInfoCard title="Résultats au bac" subtitle="À compléter" />
@@ -18,6 +20,6 @@
 
 <script setup lang="ts">
 import SchoolCard from "~/components/SchoolCard.vue";
-import FormStepClass from "~/components/FormStepClass.vue";
 import FormInfoCard from "~/components/FormInfoCard.vue";
+import ClassSection from "~/components/ClassSection.vue";
 </script>

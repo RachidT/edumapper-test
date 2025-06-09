@@ -1,6 +1,7 @@
 <template>
   <div
-    class="bg-neutral-50 rounded-xl p-4 flex items-center justify-between mb-3"
+    class="bg-neutral-50 rounded-xl p-4 flex items-center justify-between mb-3 cursor-pointer"
+    @click="$emit('edit')"
   >
     <div>
       <div class="text-sm font-medium">{{ title }}</div>
@@ -28,4 +29,6 @@ defineProps<{
   title: string;
   subtitle: string;
 }>();
+
+const emit = defineEmits(["edit"]);
 </script>
