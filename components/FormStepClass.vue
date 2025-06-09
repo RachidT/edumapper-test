@@ -19,6 +19,9 @@
         {{ c.label }}
       </button>
     </div>
+
+    <div class="border-t border-neutral-200 my-4"></div>
+
     <div class="mb-2 text-xs font-medium">Type de bac</div>
     <div class="flex gap-2 mb-4">
       <button
