@@ -5,6 +5,9 @@
     </header>
     <SchoolCard />
     <FormStepClass />
+    <FormInfoCard title="Spécialités" subtitle="À compléter" />
+    <FormInfoCard title="Notes" subtitle="À compléter" />
+    <FormInfoCard title="Résultats au bac" subtitle="À compléter" />
     <!-- Les autres étapes/formulaires viendront ici -->
     <div>
       <i-heroicons-home-solid class="w-10 h-10 text-blue-500" />
@@ -16,4 +19,5 @@
 <script setup lang="ts">
 import SchoolCard from "~/components/SchoolCard.vue";
 import FormStepClass from "~/components/FormStepClass.vue";
+import FormInfoCard from "~/components/FormInfoCard.vue";
 </script>

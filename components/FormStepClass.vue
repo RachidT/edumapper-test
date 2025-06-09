@@ -59,7 +59,7 @@ function getButtonClass(selected: boolean) {
     "px-3 py-1 rounded-full border text-xs transition",
     selected
       ? "bg-black text-white border-black"
-      : "bg-neutral-100 text-neutral-800 border-neutral-300",
+      : "bg-neutral-100 text-neutral-800 border-transparent",
   ];
 }
 
