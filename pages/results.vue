@@ -2,7 +2,6 @@
   <div>
     <header class="pt-4 mb-4">
       <h1 class="font-bold text-2xl mb-2 px-4">Edumapper*</h1>
-      <!-- Barre de progression à 100% pour la page de résultats -->
       <div class="w-full bg-neutral-200 h-1.5">
         <div class="bg-black h-1.5" style="width: 100%"></div>
       </div>
@@ -40,13 +39,65 @@
         </button>
       </div>
 
-      <!-- Ici viendront les cartes de formation -->
+      <!-- Cartes de formation -->
+      <FormationCard
+        schoolName="SKEMA"
+        location="Lille"
+        formationName="BBA - Global Management"
+        chanceLevel="tres_elevees"
+        :confidenceLevel="5"
+      />
+      <FormationCard
+        schoolName="EDHEC Business School"
+        location="Paris"
+        formationName="International BBA - Parcours Business Management"
+        chanceLevel="elevees"
+        :confidenceLevel="4"
+      />
+      <FormationCard
+        schoolName="IPAG Business School"
+        location="Grenoble"
+        formationName="International BBA - Parcours Business Management"
+        chanceLevel="faibles"
+        :confidenceLevel="3"
+      />
+      <FormationCard
+        schoolName="ICN Business School"
+        location="Puteaux"
+        formationName="IBBA - Manager International"
+        chanceLevel="moyennes"
+        :confidenceLevel="3"
+      />
+
+      <!-- Bouton Ajouter une autre formation -->
+      <div class="mt-8 mb-4 text-center">
+        <button
+          class="bg-black text-white font-semibold rounded-full px-8 py-3 transition hover:bg-neutral-800 flex items-center justify-center gap-2 mx-auto"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            ></path>
+          </svg>
+          <span>Ajouter une autre formation</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import FormationCard from "~/components/FormationCard.vue";
 
 const router = useRouter();
 
