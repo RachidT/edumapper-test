@@ -1,14 +1,17 @@
 <template>
   <div class="bg-page-bg">
-    <header class="pt-4 mb-4">
-      <h1 class="font-bold text-2xl mb-2 px-4">Edumapper*</h1>
+    <header class="pt-4 pb-4">
+      <div class="flex items-center gap-2 px-4 pb-4">
+        <h1 class="font-bold text-2xl mb-0">Edumapper</h1>
+        <Icon name="mdi:star-four-points" class="w-5 h-5" />
+      </div>
 
       <div class="w-full bg-neutral-200 h-1.5">
         <div class="bg-black h-1.5" style="width: 70%"></div>
       </div>
     </header>
 
-    <div class="px-4 w-full md:w-screen-content md:mx-auto">
+    <div class="px-4 w-full md:w-screen-content md:mx-auto mt-4">
       <SchoolCard />
       <ClassSection />
       <FormSection
