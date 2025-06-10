@@ -3,13 +3,11 @@
     <header class="pt-4 mb-4">
       <h1 class="font-bold text-2xl mb-2 px-4">Edumapper*</h1>
 
-      <!-- Barre de progression sans padding horizontal et non arrondie -->
       <div class="w-full bg-neutral-200 h-1.5">
         <div class="bg-black h-1.5" style="width: 70%"></div>
       </div>
     </header>
 
-    <!-- Appliquer le padding horizontal au contenu des cartes -->
     <div class="px-4">
       <SchoolCard />
       <ClassSection />
@@ -28,13 +26,33 @@
         placeholder="Ex: Mention Très Bien"
         emptySubtitle="À compléter"
       />
+
+      <div class="mt-8 mb-4 text-center">
+        <button
+          class="bg-black text-white font-semibold rounded-full px-8 py-3 transition hover:bg-neutral-800"
+          @click="startCalculation"
+        >
+          Estimer mes chances
+        </button>
+      </div>
     </div>
+
+    <CalculationLoader v-if="showLoader" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
 import SchoolCard from "~/components/SchoolCard.vue";
 import FormInfoCard from "~/components/FormInfoCard.vue";
 import ClassSection from "~/components/ClassSection.vue";
 import FormSection from "~/components/FormSection.vue";
+import CalculationLoader from "~/components/CalculationLoader.vue";
+
+const showLoader = ref(false);
+
+function startCalculation() {
+  showLoader.value = true;
+}
 </script>
