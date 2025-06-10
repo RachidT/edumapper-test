@@ -7,7 +7,19 @@ export default {
     "./plugins/**/*.{js,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "page-bg": "#F7F3F0",
+        "card-bg": "#FCFAF9",
+      },
+      screens: {
+        md: "744px",
+        desktop: "720px",
+      },
+      maxWidth: {
+        "content-desktop": "720px",
+      },
+    },
   },
   plugins: [],
 };

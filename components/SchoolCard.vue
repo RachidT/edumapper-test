@@ -1,6 +1,6 @@
 <template>
   <div
-    class="rounded-3xl p-6 mb-4 shadow flex flex-col gap-4"
+    class="rounded-3xl p-6 mb-4 shadow flex flex-col md:flex-row md:justify-between md:items-center gap-4"
     style="
       background: linear-gradient(
         120deg,
@@ -27,4 +27,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// defineEmits(['edit-school']); est retiré
+</script>

@@ -8,7 +8,7 @@
       </div>
     </header>
 
-    <div class="px-4">
+    <div class="px-4 w-full md:w-screen-content md:mx-auto">
       <SchoolCard />
       <ClassSection />
       <FormSection
