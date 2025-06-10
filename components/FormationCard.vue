@@ -1,6 +1,5 @@
 <template>
   <div class="rounded-xl shadow mb-4 overflow-hidden">
-    <!-- Header de la carte : fond gris -->
     <div class="bg-neutral-50 p-4">
       <div class="flex justify-between items-start">
         <div>
@@ -11,16 +10,19 @@
             {{ formationName }}
           </div>
         </div>
-        <button class="text-neutral-400 text-lg leading-none">×</button>
+        <button
+          class="text-neutral-400 text-lg leading-none"
+          @click="$emit('delete', id)"
+        >
+          ×
+        </button>
       </div>
     </div>
 
-    <!-- Corps de la carte : fond blanc -->
     <div class="bg-white p-4">
       <div class="mb-3">
         <div class="text-sm text-neutral-700 mb-1">Mes chances</div>
         <div class="flex items-center gap-2 mb-2">
-          <!-- Barre de chances (simulée avec 5 segments) -->
           <div class="flex-1 flex gap-0.5">
             <div
               v-for="i in 5"
@@ -82,6 +84,7 @@ const props = defineProps<{
   formationName: string;
   chanceLevel: "tres_elevees" | "elevees" | "moyennes" | "faibles";
   confidenceLevel: number; // 1 to 5 stars
+  id: string;
 }>();
 
 const showDetails = ref(false);

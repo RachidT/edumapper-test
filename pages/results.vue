@@ -40,13 +40,15 @@
       </div>
 
       <FormationCard
-        v-for="(formation, index) in formations"
-        :key="index"
+        v-for="formation in formations"
+        :key="formation.id"
+        :id="formation.id"
         :schoolName="formation.schoolName"
         :location="formation.location"
         :formationName="formation.formationName"
         :chanceLevel="formation.chanceLevel"
         :confidenceLevel="formation.confidenceLevel"
+        @delete="handleDeleteFormation"
       />
 
       <div class="mt-8 mb-4 text-center">
@@ -106,9 +108,11 @@ const newFormation = ref({
   formationName: "",
 });
 
-// Liste des formations affichées
+const generateUniqueId = () => Math.random().toString(36).substr(2, 9);
+
 const formations = ref([
   {
+    id: generateUniqueId(),
     schoolName: "SKEMA",
     location: "Lille",
     formationName: "BBA - Global Management",
@@ -116,6 +120,7 @@ const formations = ref([
     confidenceLevel: 5,
   },
   {
+    id: generateUniqueId(),
     schoolName: "EDHEC Business School",
     location: "Paris",
     formationName: "International BBA - Parcours Business Management",
@@ -123,6 +128,7 @@ const formations = ref([
     confidenceLevel: 4,
   },
   {
+    id: generateUniqueId(),
     schoolName: "IPAG Business School",
     location: "Grenoble",
     formationName: "International BBA - Parcours Business Management",
@@ -130,6 +136,7 @@ const formations = ref([
     confidenceLevel: 3,
   },
   {
+    id: generateUniqueId(),
     schoolName: "ICN Business School",
     location: "Puteaux",
     formationName: "IBBA - Manager International",
@@ -147,12 +154,10 @@ function handleAddFormationSubmit(data: {
   city: string;
   formationName: string;
 }) {
-  showAddFormationModal.value = false; // Ferme la modale
-  showLoader.value = true; // Affiche le loader
+  showAddFormationModal.value = false;
+  showLoader.value = true;
 
-  // Simuler le calcul des chances après un délai
   setTimeout(() => {
-    // Génère des chances et un niveau de confiance aléatoires pour la démo
     const randomChanceLevel = [
       "tres_elevees",
       "elevees",
@@ -166,6 +171,7 @@ function handleAddFormationSubmit(data: {
     const randomConfidenceLevel = Math.floor(Math.random() * 5) + 1; // Entre 1 et 5
 
     formations.value.push({
+      id: `new-${generateUniqueId()}`,
       schoolName: data.schoolName,
       location: data.city,
       formationName: data.formationName,
@@ -173,16 +179,19 @@ function handleAddFormationSubmit(data: {
       confidenceLevel: randomConfidenceLevel,
     });
 
-    // Réinitialise le formulaire pour la prochaine fois
     newFormation.value = { schoolName: "", city: "", formationName: "" };
 
     showLoader.value = false; // Masque le loader une fois la formation ajoutée
   }, 2500); // Délai de 2.5 secondes pour simuler le calcul
 }
 
-// Géré par le loader lui-même (peut être retiré si le loader n'a plus de redirection)
-function handleCalculationLoaded() {
-  // Cette fonction n'est plus directement utilisée ici pour la redirection
-  // car le loader est géré par la logique du setTimeout
+function handleDeleteFormation(idToDelete: string) {
+  // Seules les formations dont l'ID commence par 'new-' peuvent être supprimées
+  // afin de conserver les formations statiques présentes dans la maquette
+  if (idToDelete.startsWith("new-")) {
+    formations.value = formations.value.filter((f) => f.id !== idToDelete);
+  }
 }
+
+function handleCalculationLoaded() {}
 </script>
