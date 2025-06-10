@@ -13,9 +13,12 @@
     <div>
       <div class="font-bold text-white text-2xl mb-2">Lycée Gaston Berger</div>
       <div class="flex items-center gap-2 text-white/90 text-base">
-        <i-heroicons-map-pin-solid class="w-5 h-5 text-white" />
+        <Icon name="heroicons:map-pin" class="w-5 h-5 text-white" />
         <span>Lille</span>
-        <i-heroicons-building-office-2-solid class="w-5 h-5 text-white ml-2" />
+        <Icon
+          name="heroicons:building-office-2"
+          class="w-5 h-5 text-white ml-2"
+        />
         <span>Lycée Public</span>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-page-bg">
     <header class="pt-4 mb-4">
       <h1 class="font-bold text-2xl mb-2 px-4">Edumapper*</h1>
 

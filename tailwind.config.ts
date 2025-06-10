@@ -14,10 +14,9 @@ export default {
       },
       screens: {
         md: "744px",
-        desktop: "720px",
       },
-      maxWidth: {
-        "content-desktop": "720px",
+      width: {
+        "screen-content": "720px",
       },
     },
   },
