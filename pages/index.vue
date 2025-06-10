@@ -37,12 +37,13 @@
       </div>
     </div>
 
-    <CalculationLoader v-if="showLoader" />
+    <CalculationLoader v-if="showLoader" @loaded="handleCalculationLoaded" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 import SchoolCard from "~/components/SchoolCard.vue";
 import FormInfoCard from "~/components/FormInfoCard.vue";
@@ -51,8 +52,14 @@ import FormSection from "~/components/FormSection.vue";
 import CalculationLoader from "~/components/CalculationLoader.vue";
 
 const showLoader = ref(false);
+const router = useRouter();
 
 function startCalculation() {
   showLoader.value = true;
+}
+
+function handleCalculationLoaded() {
+  showLoader.value = false;
+  router.push("/results");
 }
 </script>

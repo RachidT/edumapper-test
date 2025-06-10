@@ -16,11 +16,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 
+const emit = defineEmits(["loaded"]);
+
 const progress = ref(0);
 let interval: ReturnType<typeof setInterval> | null = null;
 
 onMounted(() => {
-  const duration = 3000;
+  const duration = 2500;
   const steps = 100;
   const increment = 100 / steps;
   const intervalTime = duration / steps;
@@ -30,6 +32,7 @@ onMounted(() => {
       progress.value += increment;
     } else {
       clearInterval(interval as ReturnType<typeof setInterval>);
+      emit("loaded");
     }
   }, intervalTime);
 });
