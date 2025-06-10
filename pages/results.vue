@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-page-bg">
+  <div class="lex flex-col min-h-screen bg-page-bg">
     <header class="pt-4 mb-4">
       <h1 class="font-bold text-2xl mb-2 px-4">Edumapper*</h1>
       <div class="w-full bg-neutral-200 h-1.5">
@@ -7,7 +7,7 @@
       </div>
     </header>
 
-    <div class="px-4 w-full md:w-screen-content md:mx-auto">
+    <div class="flex-grow px-4 w-full md:w-screen-content md:mx-auto">
       <h2 class="font-bold text-2xl mb-4">
         Tes chances d'admission aux formations
       </h2>
@@ -41,7 +41,7 @@
         @delete="handleDeleteFormation"
       />
 
-      <div class="mt-8 mb-4 text-center">
+      <div class="mt-8 mb-4 text-center pb-4">
         <button
           class="bg-black text-white font-semibold rounded-full px-8 py-3 transition hover:bg-neutral-800 flex items-center justify-center gap-2 mx-auto"
           @click="showAddFormationModal = true"

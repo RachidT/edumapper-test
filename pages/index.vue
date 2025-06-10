@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-page-bg">
+  <div class="flex flex-col min-h-screen bg-page-bg">
     <header class="pt-4 pb-4">
       <div class="flex items-center gap-2 px-4 pb-4">
         <h1 class="font-bold text-2xl mb-0">Edumapper</h1>
@@ -11,7 +11,7 @@
       </div>
     </header>
 
-    <div class="px-4 w-full md:w-screen-content md:mx-auto mt-4">
+    <div class="flex-grow px-4 w-full md:w-screen-content md:mx-auto mt-4">
       <SchoolCard />
       <ClassSection />
       <FormSection
