@@ -39,40 +39,20 @@
         </button>
       </div>
 
-      <!-- Cartes de formation -->
       <FormationCard
-        schoolName="SKEMA"
-        location="Lille"
-        formationName="BBA - Global Management"
-        chanceLevel="tres_elevees"
-        :confidenceLevel="5"
-      />
-      <FormationCard
-        schoolName="EDHEC Business School"
-        location="Paris"
-        formationName="International BBA - Parcours Business Management"
-        chanceLevel="elevees"
-        :confidenceLevel="4"
-      />
-      <FormationCard
-        schoolName="IPAG Business School"
-        location="Grenoble"
-        formationName="International BBA - Parcours Business Management"
-        chanceLevel="faibles"
-        :confidenceLevel="3"
-      />
-      <FormationCard
-        schoolName="ICN Business School"
-        location="Puteaux"
-        formationName="IBBA - Manager International"
-        chanceLevel="moyennes"
-        :confidenceLevel="3"
+        v-for="(formation, index) in formations"
+        :key="index"
+        :schoolName="formation.schoolName"
+        :location="formation.location"
+        :formationName="formation.formationName"
+        :chanceLevel="formation.chanceLevel"
+        :confidenceLevel="formation.confidenceLevel"
       />
 
-      <!-- Bouton Ajouter une autre formation -->
       <div class="mt-8 mb-4 text-center">
         <button
           class="bg-black text-white font-semibold rounded-full px-8 py-3 transition hover:bg-neutral-800 flex items-center justify-center gap-2 mx-auto"
+          @click="showAddFormationModal = true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -92,16 +72,117 @@
         </button>
       </div>
     </div>
+
+    <Modal :show="showAddFormationModal" @close="showAddFormationModal = false">
+      <AddFormationForm
+        v-model:schoolName="newFormation.schoolName"
+        v-model:city="newFormation.city"
+        v-model:formationName="newFormation.formationName"
+        @submit="handleAddFormationSubmit"
+      />
+    </Modal>
+
+    <CalculationLoader v-if="showLoader" @loaded="handleCalculationLoaded" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import FormationCard from "~/components/FormationCard.vue";
+import Modal from "~/components/Modal.vue";
+import AddFormationForm from "~/components/AddFormationForm.vue";
+import CalculationLoader from "~/components/CalculationLoader.vue";
 
 const router = useRouter();
 
+const showAddFormationModal = ref(false);
+const showLoader = ref(false);
+
+// Valeurs initiales pour le formulaire d'ajout
+const newFormation = ref({
+  schoolName: "",
+  city: "",
+  formationName: "",
+});
+
+// Liste des formations affichées
+const formations = ref([
+  {
+    schoolName: "SKEMA",
+    location: "Lille",
+    formationName: "BBA - Global Management",
+    chanceLevel: "tres_elevees",
+    confidenceLevel: 5,
+  },
+  {
+    schoolName: "EDHEC Business School",
+    location: "Paris",
+    formationName: "International BBA - Parcours Business Management",
+    chanceLevel: "elevees",
+    confidenceLevel: 4,
+  },
+  {
+    schoolName: "IPAG Business School",
+    location: "Grenoble",
+    formationName: "International BBA - Parcours Business Management",
+    chanceLevel: "faibles",
+    confidenceLevel: 3,
+  },
+  {
+    schoolName: "ICN Business School",
+    location: "Puteaux",
+    formationName: "IBBA - Manager International",
+    chanceLevel: "moyennes",
+    confidenceLevel: 3,
+  },
+]);
+
 function navigateToProfile() {
   router.push("/");
+}
+
+function handleAddFormationSubmit(data: {
+  schoolName: string;
+  city: string;
+  formationName: string;
+}) {
+  showAddFormationModal.value = false; // Ferme la modale
+  showLoader.value = true; // Affiche le loader
+
+  // Simuler le calcul des chances après un délai
+  setTimeout(() => {
+    // Génère des chances et un niveau de confiance aléatoires pour la démo
+    const randomChanceLevel = [
+      "tres_elevees",
+      "elevees",
+      "moyennes",
+      "faibles",
+    ][Math.floor(Math.random() * 4)] as
+      | "tres_elevees"
+      | "elevees"
+      | "moyennes"
+      | "faibles";
+    const randomConfidenceLevel = Math.floor(Math.random() * 5) + 1; // Entre 1 et 5
+
+    formations.value.push({
+      schoolName: data.schoolName,
+      location: data.city,
+      formationName: data.formationName,
+      chanceLevel: randomChanceLevel,
+      confidenceLevel: randomConfidenceLevel,
+    });
+
+    // Réinitialise le formulaire pour la prochaine fois
+    newFormation.value = { schoolName: "", city: "", formationName: "" };
+
+    showLoader.value = false; // Masque le loader une fois la formation ajoutée
+  }, 2500); // Délai de 2.5 secondes pour simuler le calcul
+}
+
+// Géré par le loader lui-même (peut être retiré si le loader n'a plus de redirection)
+function handleCalculationLoaded() {
+  // Cette fonction n'est plus directement utilisée ici pour la redirection
+  // car le loader est géré par la logique du setTimeout
 }
 </script>
