@@ -30,36 +30,26 @@
       <div class="mt-8 mb-4 text-center">
         <button
           class="bg-black text-white font-semibold rounded-full px-8 py-3 transition hover:bg-neutral-800"
-          @click="startCalculation"
+          @click="navigateToResults"
         >
-          Estimer mes chances
+          Valider mon profil
         </button>
       </div>
     </div>
-
-    <CalculationLoader v-if="showLoader" @loaded="handleCalculationLoaded" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 import SchoolCard from "~/components/SchoolCard.vue";
 import FormInfoCard from "~/components/FormInfoCard.vue";
 import ClassSection from "~/components/ClassSection.vue";
 import FormSection from "~/components/FormSection.vue";
-import CalculationLoader from "~/components/CalculationLoader.vue";
 
-const showLoader = ref(false);
 const router = useRouter();
 
-function startCalculation() {
-  showLoader.value = true;
-}
-
-function handleCalculationLoaded() {
-  showLoader.value = false;
+function navigateToResults() {
   router.push("/results");
 }
 </script>
