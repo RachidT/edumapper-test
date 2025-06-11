@@ -29,6 +29,19 @@
         </button>
       </div>
 
+      <div v-if="formations.length === 0" class="text-center py-12">
+        <Icon
+          name="heroicons:academic-cap"
+          class="w-16 h-16 text-gray-400 mx-auto mb-4"
+        />
+        <p class="text-lg text-gray-600">
+          Aucune formation ajoutée pour le moment.
+        </p>
+        <p class="text-sm text-gray-500 mt-2">
+          Cliquez sur "Ajouter une autre formation" pour commencer.
+        </p>
+      </div>
+
       <FormationCard
         v-for="formation in formations"
         :key="formation.id"
