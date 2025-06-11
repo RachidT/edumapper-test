@@ -91,7 +91,6 @@ const router = useRouter();
 const showAddFormationModal = ref(false);
 const showLoader = ref(false);
 
-// Valeurs initiales pour le formulaire d'ajout
 const newFormation = ref({
   schoolName: "",
   city: "",
@@ -161,7 +160,7 @@ function handleAddFormationSubmit(data: {
     const randomConfidenceLevel = Math.floor(Math.random() * 5) + 1; // Entre 1 et 5
 
     formations.value.push({
-      id: `new-${generateUniqueId()}`,
+      id: generateUniqueId(),
       schoolName: data.schoolName,
       location: data.city,
       formationName: data.formationName,
@@ -176,11 +175,7 @@ function handleAddFormationSubmit(data: {
 }
 
 function handleDeleteFormation(idToDelete: string) {
-  // Seules les formations dont l'ID commence par 'new-' peuvent être supprimées
-  // afin de conserver les formations statiques présentes dans la maquette
-  if (idToDelete.startsWith("new-")) {
-    formations.value = formations.value.filter((f) => f.id !== idToDelete);
-  }
+  formations.value = formations.value.filter((f) => f.id !== idToDelete);
 }
 
 function handleCalculationLoaded() {}
