@@ -8,9 +8,9 @@ npm install
 npm run dev
 ```
 
-## url Netlify
+## url Projet
 
-https://mellifluous-granita-88d3df.netlify.app/
+https://edumapper-test.netlify.app/
 
 ## structure du projet
 
