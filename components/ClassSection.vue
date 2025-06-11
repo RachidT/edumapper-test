@@ -1,21 +1,25 @@
 <template>
   <div>
-    <FormStepClass
-      v-if="isEditing"
-      :selectedClass="classValue"
-      :selectedBac="bacValue"
-      @update:selectedClass="classValue = $event"
-      @update:selectedBac="bacValue = $event"
-      @confirmed="handleFormConfirmed"
-      @closed="handleFormClosed"
-    />
+    <Transition name="fade-slide" mode="out-in">
+      <div :key="isEditing">
+        <FormStepClass
+          v-if="isEditing"
+          :selectedClass="classValue"
+          :selectedBac="bacValue"
+          @update:selectedClass="classValue = $event"
+          @update:selectedBac="bacValue = $event"
+          @confirmed="handleFormConfirmed"
+          @closed="handleFormClosed"
+        />
 
-    <FormInfoCard
-      v-else
-      title="Classe"
-      :subtitle="displayClassAndBac"
-      @edit="handleEdit"
-    />
+        <FormInfoCard
+          v-else
+          title="Classe"
+          :subtitle="displayClassAndBac"
+          @edit="handleEdit"
+        />
+      </div>
+    </Transition>
   </div>
 </template>
 

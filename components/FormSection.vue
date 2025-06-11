@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <FormStepInput
-      v-if="isEditing"
-      :title="title"
-      :placeholder="placeholder"
-      v-model="value"
-      @confirmed="handleFormConfirmed"
-      @closed="handleFormClosed"
-    />
+  <Transition name="fade-slide" mode="out-in">
+    <div :key="isEditing">
+      <FormStepInput
+        v-if="isEditing"
+        :title="title"
+        :placeholder="placeholder"
+        v-model="value"
+        @confirmed="handleFormConfirmed"
+        @closed="handleFormClosed"
+      />
 
-    <FormInfoCard
-      v-else
-      :title="title"
-      :subtitle="displayValue"
-      @edit="handleEdit"
-    />
-  </div>
+      <FormInfoCard
+        v-else
+        :title="title"
+        :subtitle="displayValue"
+        @edit="handleEdit"
+      />
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
