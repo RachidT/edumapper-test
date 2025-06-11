@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-xl shadow mb-4 overflow-hidden">
+  <div class="w-full rounded-xl shadow overflow-hidden">
     <div class="bg-neutral-50 p-4">
       <div class="flex justify-between items-start">
         <div>
